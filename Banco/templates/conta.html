@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conta</title>
+</head>
+<body>
+    <h1>Saldo atual da conta</h1>
+    <table border="1">
+        <tr>
+          <td>Saldo: </td>
+        </tr>
+        <tr>
+          <td>{{ saldo }}</td>
+        </tr>
+        <tr>
+          <td>Produtos: </td>
+        </tr>
+        {% for produto in produtos %}
+        <tr>
+            <td>{{ produto }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+    <a href="/">
+        <button>Retornar à página principal</button>
+    </a>
+</body>
+</html>
