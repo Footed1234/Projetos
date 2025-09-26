@@ -25,7 +25,7 @@ app.post('/', (req, res) => {
         res.send('Login bem-sucedido! Bem-vindo, Administrador!');
     } 
     
-    else if (usuario === 'henrique' && senha === 'aleatorio123'){
+    else if (usuario === 'nome' && senha === 'aleatorio123'){
         res.sendFile(path.join(__dirname, 'site', 'loja.html'));
     }
 
