@@ -17,7 +17,7 @@ Olá, Carlos! Você tem 25 anos.
 ## Como executar
 
 1. Certifique-se de ter o [Java](https://www.java.com/pt-BR/download/) instalado em seu computador.
-2. Baixe o arquivo `CalculadoraDeIdade.java`.
+2. Baixe o arquivo `CalculadoraDeIdade.java` dentro da pasta src
 3. Compile o arquivo:
    ```
    javac CalculadoraDeIdade.java
