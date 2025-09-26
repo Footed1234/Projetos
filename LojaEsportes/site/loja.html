@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Produtos Esportivos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boldonse&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #004d00;
+            text-align: center;
+            background-color: #000000;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        header {
+            text-align: center; 
+            background-image: url("campo de futebol.jpg");
+            padding: 20px;
+            border-bottom: 5px solid #004d00;
+        }
+
+        .header-content h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .header-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .botao-topo {
+            background: linear-gradient(to right, #004d00, #32cd32);
+            border: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        .botao-topo:hover {
+            background: linear-gradient(to right, #32cd32, #004d00);
+            transform: scale(1.05);
+        }
+
+        .search-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .search-container input {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-container button {
+            padding: 8px;
+            background-color: #32cd32;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .produtos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .categoria {
+            width: 100%;
+            margin-top: 30px;
+            color: green;
+            font-size: 2em;
+            font-family: "Boldonse", system-ui;
+            text-shadow: 0.25px 0.25px 0.25px white;        
+        }
+
+        .produto {
+            background-color: rgba(192, 241, 192, 0.959);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 77, 0, 0.5);
+            width: 250px;
+            text-align: center;
+        }
+
+        .produto img {
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+        }
+
+        .estilo-texto {
+            color: #000000;
+        }
+
+        .cronometro {
+            font-size: 30px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+    <script>
+        let carrinho = [];
+
+        function cadastro() {
+            const nome = window.prompt("Digite seu nome:");
+            const email = window.prompt("Digite seu email:");
+            window.alert("Cadastro realizado com sucesso! Nome: " + nome + ", Email: " + email);
+        }
+
+        function adicionarAoCarrinho(produto, preco) {
+            carrinho.push({ produto, preco });
+            window.alert(produto + " foi adicionado ao carrinho!");
+        }
+
+        function compra() {
+            if (carrinho.length === 0) {
+                window.alert("Seu carrinho está vazio.");
+            } else {
+                let total = 0;
+                let itens = "Itens no carrinho:\n";
+                carrinho.forEach(item => {
+                    itens += `- ${item.produto}: R$ ${item.preco}\n`;
+                    total += item.preco;
+                });
+                itens += `\nTotal: R$ ${total}`;
+                window.alert(itens);
+                carrinho = [];
+            }
+        }
+
+        const produtosCatalogo = [
+            // Futebol
+            { nome: "Bola de Futebol", preco: 120, categoria: "Futebol" },
+            { nome: "Chuteira de Futebol", preco: 300, categoria: "Futebol" },
+            { nome: "Camiseta de Futebol", preco: 100, categoria: "Futebol" },
+            { nome: "Meião de Futebol", preco: 50, categoria: "Futebol" },
+            
+            // Corrida
+            { nome: "Tênis de Corrida", preco: 250, categoria: "Corrida" },
+            { nome: "Roupas de Corrida", preco: 90, categoria: "Corrida" },
+            { nome: "Relógio de Corrida", preco: 350, categoria: "Corrida" },
+            { nome: "Faixa de Cabeça de Corrida", preco: 30, categoria: "Corrida" },
+            
+            // Musculação
+            { nome: "Luvas de Treino", preco: 60, categoria: "Musculação" },
+            { nome: "Camiseta de Musculação", preco: 80, categoria: "Musculação" },
+            { nome: "Tênis de Musculação", preco: 200, categoria: "Musculação" },
+            { nome: "Garrafinha de Água", preco: 40, categoria: "Musculação" },
+            
+            // Ciclismo
+            { nome: "Capacete de Ciclismo", preco: 150, categoria: "Ciclismo" },
+            { nome: "Luvas de Ciclismo", preco: 60, categoria: "Ciclismo" },
+            { nome: "Bicicleta", preco: 1200, categoria: "Ciclismo" },
+            { nome: "Short de Ciclismo", preco: 90, categoria: "Ciclismo" }
+        ];
+
+        function performSearch() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const resultados = produtosCatalogo.filter(produto => 
+                produto.nome.toLowerCase().includes(query)
+            );
+
+            let mensagem;
+            if (resultados.length > 0) {
+                mensagem = "Produtos encontrados:<br>";
+                resultados.forEach(produto => {
+                    mensagem += `- ${produto.nome}: R$ ${produto.preco}<br>`;
+                });
+            } else {
+                mensagem = "Nenhum produto encontrado.";
+            }
+            document.getElementById("searchResult").innerHTML = mensagem;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>SPORTSHOP</h1>
+            <div class="header-buttons">
+                <div class="left-buttons">
+                    <button class="botao-topo" onclick="compra()">Compra</button>
+                </div>
+                <button class="botao-topo" onclick="cadastro()">Login</button>
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Busque um produto...">
+            <button onclick="performSearch()">Pesquisar</button>
+        </div>
+        <div id="searchResult" style="margin-top: 20px; color: white; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);"></div>
+    </header>
+    
+    <div id="relogio" style="font-size: 24px; font-weight: bold; margin-top: 20px; color: white;">
+        <script>
+            function atualizarRelogio(){
+                var agora = new Date()
+                var horas = agora.getHours().toString().padStart(2, '0')
+                var minutos = agora.getMinutes().toString().padStart(2, '0')
+                var segundos = agora.getSeconds().toString().padStart(2, '0')
+                document.getElementById("relogio").innerText = horas+":"+minutos+":"+segundos
+            }
+            setInterval(atualizarRelogio, 1000)
+        </script>
+    </div>
+    <br>
+    <h1 class="cronometro">Promoção imperdível em: </h1>
+    <div id="cronometro" class="cronometro">
+        <script>
+            let tempoRestante = 48 * 60 * 60 * 1000;
+
+            function atualizarCronometro() {
+            if (tempoRestante <= 0) {
+                document.getElementById('cronometro').innerHTML = "Tempo Esgotado!";
+                clearInterval(contador);
+                return;
+            }
+
+            let horas = Math.floor((tempoRestante / (1000 * 60 * 60)) % 24);
+            let minutos = Math.floor((tempoRestante / (1000 * 60)) % 60);
+            let segundos = Math.floor((tempoRestante / 1000) % 60);
+
+            document.getElementById('cronometro').innerHTML =
+                (horas < 10 ? '0' : '') + horas + ":" +
+                (minutos < 10 ? '0' : '') + minutos + ":" +
+                (segundos < 10 ? '0' : '') + segundos;
+
+            tempoRestante -= 1000;
+            }
+
+            let contador = setInterval(atualizarCronometro, 1000);
+        </script>
+    </div>
+    
+    <div class="categoria">Futebol</div>
+    <div class="produtos">
+        <div class="produto">
+            <img src="bola futebol.png" alt="Bola de Futebol">
+            <h3>Bola de Futebol</h3>
+            <p>Bola oficial para jogos e treinos.</p>
+            <p><strong>R$ 120,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Bola de Futebol', 120)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="chuteira.webp" alt="Chuteira de Futebol">
+            <h3>Chuteira de Futebol</h3>
+            <p>Chuteira para maior desempenho.</p>
+            <p><strong>R$ 300,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Chuteira de Futebol', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="corinthians.png" alt="Camiseta de Futebol">
+            <h3>Camiseta de Futebol</h3>
+            <p>Confortável e ideal para o campo.</p>
+            <p><strong>R$ 100,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Camiseta de Futebol', 100)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="meia corinthians.webp" alt="Meião de Futebol">
+            <h3>Meião de Futebol</h3>
+            <p>Proporciona conforto durante a partida.</p>
+            <p><strong>R$ 50,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Meião de Futebol', 50)">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+    
+    <div class="categoria">Corrida</div>
+    <div class="produtos">
+        <div class="produto">
+            <img src="tenis.jpg" alt="Tênis de Corrida">
+            <h3>Tênis de Corrida</h3>
+            <p>Conforto e desempenho para suas corridas.</p>
+            <p><strong>R$ 250,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Tênis de Corrida', 250)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="roupa corrida.jpg" alt="Roupas de Corrida">
+            <h3>Roupas de Corrida</h3>
+            <p>Leve e respirável para todas as atividades físicas.</p>
+            <p><strong>R$ 90,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Roupas de Corrida', 90)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="relogio corrida.webp" alt="Relógio de Corrida">
+            <h3>Relógio de Corrida</h3>
+            <p>Acompanhe seu desempenho com precisão.</p>
+            <p><strong>R$ 350,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Relógio de Corrida', 350)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="faixa corrida.webp" alt="Faixa de Cabeça de Corrida">
+            <h3>Faixa de Cabeça</h3>
+            <p>Evite o suor durante a corrida.</p>
+            <p><strong>R$ 30,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Faixa de Cabeça de Corrida', 30)">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+    
+    <div class="categoria">Musculação</div>
+    <div class="produtos">
+        <div class="produto">
+            <img src="luva de treino.png" alt="Luvas de Treino">
+            <h3>Luvas de Treino</h3>
+            <p>Proteção e aderência para musculação e esportes.</p>
+            <p><strong>R$ 60,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Luvas de Treino', 60)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="camiseta academia.avif" alt="Camiseta de Musculação">
+            <h3>Camiseta de Musculação</h3>
+            <p>Leve e confortável para o treino.</p>
+            <p><strong>R$ 80,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Camiseta de Musculação', 80)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="tenis musculação.webp" alt="Tênis de Musculação">
+            <h3>Tênis de Musculação</h3>
+            <p>Conforto e estabilidade para os seus treinos.</p>
+            <p><strong>R$ 200,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Tênis de Musculação', 200)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="garrafa academia.webp" alt="Garrafinha de Água">
+            <h3>Garrafinha de Água</h3>
+            <p>Prática e compacta para manter-se hidratado.</p>
+            <p><strong>R$ 40,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Garrafinha de Água', 40)">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+    
+    <div class="categoria">Ciclismo</div>
+    <div class="produtos">
+        <div class="produto">
+            <img src="capacete ciclismo.webp" alt="Capacete de Ciclismo">
+            <h3>Capacete de Ciclismo</h3>
+            <p>Segurança para seus passeios de bicicleta.</p>
+            <p><strong>R$ 150,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Capacete de Ciclismo', 150)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="luva ciclismo.jpg" alt="Luvas de Ciclismo">
+            <h3>Luvas de Ciclismo</h3>
+            <p>Conforto e aderência para suas pedaladas.</p>
+            <p><strong>R$ 60,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Luvas de Ciclismo', 60)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="bicicleta.webp" alt="Bicicleta">
+            <h3>Bicicleta</h3>
+            <p>Para você que ama pedalar com conforto.</p>
+            <p><strong>R$ 1200,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Bicicleta', 1200)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+            <img src="bermuda ciclismo.webp" alt="Short de Ciclismo">
+            <h3>Short de Ciclismo</h3>
+            <p>Leve e confortável para longas pedaladas.</p>
+            <p><strong>R$ 90,00</strong></p>
+            <button class="botao-topo" onclick="adicionarAoCarrinho('Short de Ciclismo', 90)">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+</body>
+</html>
