@@ -1,0 +1,25 @@
+run = True
+chave = "False"
+luta = False
+afk = True
+comprar = False
+falar = False
+boss = False
+fim = "False"
+menu = True
+jogar = False
+
+nome = ""
+crit = 10
+crit_dano = 2
+max_xp = 200
+xp = 0
+atk = 2
+pocao = 1
+elixir = 0
+ouro = 0
+x = 0
+y = 0
+nivel = 1
+hp = 100
+max_hp = 100
